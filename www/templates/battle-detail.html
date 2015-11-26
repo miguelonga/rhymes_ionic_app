@@ -1,0 +1,29 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view view-title="{{battle.name}}">
+
+  <ion-content class="" scroll="false" ng-controller="BattleDetailCtrl">
+  <div class="row">
+    
+
+    
+  </div>
+  
+    <div class="col micro-center-content padding">
+      <img src="img/micro.png" alt="" class="logo {{ pause_class }}" ng-click="ask()" on-hold="play()" on-drag-left="pause()">
+      <div id="spinner">
+        <ion-spinner ng-class="{'sounding': isSounding}" icon="lines"></ion-spinner> 
+      </div>
+      
+      <p class="theme" ng-class="{'show': themesonged}">{{ theme }}</p>
+      
+    </div>
+  
+    
+  </ion-content>
+</ion-view>
