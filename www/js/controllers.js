@@ -27,16 +27,17 @@ angular.module('starter.controllers', [])
 
   $scope.battle = Battles.get($stateParams.battleId);
 
-  $scope.theme = "Toca el micro para empezar";
+  $scope.theme = "Manten el micro pulsado para empezar y deslizado hacia la izquierda para acabar";
 
   $scope.themesonged = true;  
   
   $scope.asked = 0;
 
-  if ($scope.media) { $scope.isSounding = false } else{ $scope.isSounding = true };
+  $scope.isSounding = true;
 
   $scope.ask = function () {
     $scope.themesonged = false;
+    
     $scope.asked++;
     $timeout(function (){
       // $scope.theme = $scope.battle.themeList[Math.floor(Math.random() * $scope.battle.themeList.length)];
@@ -59,13 +60,12 @@ angular.module('starter.controllers', [])
     if($scope.media){
       $scope.media.pause();
     }
-
+    $scope.theme = "Toca el micro para cambiar el tema";
     $scope.media = new Audio();
     $scope.media.src = $scope.battle.audio;
     $scope.media.load();
     $scope.media.play();
     $scope.isSounding = false;
-    
   }
 
   $scope.pause_class = "";
@@ -76,12 +76,14 @@ angular.module('starter.controllers', [])
     $timeout(function (){
       $scope.pause_class = "";
       $scope.theme = "Toca el micro para empezar";
-    },400);
+    },700);
     
 
     
     $scope.isSounding = true;
   }
+
+
 
 
 })
