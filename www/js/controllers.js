@@ -20,21 +20,21 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('BattleDetailCtrl', function($scope, $timeout, $stateParams, Battles) {
+.controller('BattleDetailCtrl', function($scope, $timeout, $stateParams, battleService) {
 
-  $scope.battle = Battles.get($stateParams.battleId);
+  $scope.battle = battleService.get($stateParams.battleId);
 
   $scope.theme = "Manten el micro pulsado para empezar y deslizado hacia la izquierda para acabar";
 
   $scope.themesonged = true;  
   
-  $scope.asked = 0;
+  $scope.asked = 1;
 
   $scope.isSounding = true;
 
   $scope.ask = function () {
     $scope.themesonged = false;
-    
+    console.log();
     $scope.asked++;
     $timeout(function (){
       // $scope.theme = $scope.battle.themeList[Math.floor(Math.random() * $scope.battle.themeList.length)];
@@ -43,9 +43,6 @@ angular.module('starter.controllers', [])
       };
       if ($scope.asked == 20) {
         $scope.theme = "Pasa el micro"
-      };
-      if ($scope.asked > 20) {
-        $scope.theme = $scope.battle.themeList[-($scope.asked - 3)]; 
       };
       $scope.themesonged = true;
     },400);
