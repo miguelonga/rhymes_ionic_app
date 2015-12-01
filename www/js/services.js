@@ -1,5 +1,17 @@
 angular.module('starter.services', [])
 
+.factory('battleService',function($firebaseArray) {
+    var fb = new Firebase("https://rhymesthis.firebaseio.com/");
+    var battles = $firebaseArray(fb);
+    var battleService = {
+        all: battles,
+        get: function(battId) {
+            return battles.$getRecord(battId);
+        }        
+    };
+    return battleService;
+})
+
 .factory('Battles', function() {
   // Might use a resource here that returns a JSON array
 
